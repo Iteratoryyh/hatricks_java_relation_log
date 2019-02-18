@@ -14,7 +14,7 @@ JVM-学习郑宇迪教程-有感
 ```
  当虚拟机遇到invokedynamic指令-->bootstrapmethod-->callsite.makesite-->在连接过程中
  lambdametafactory.metafactory方法生成内部类,通过unsafe的方式加载到方法区里面-->然后通过
- classsite持有的methodhandler链接到生成内部类的获取方法.以后在调用的时候就不需要在进行加载了
+ callsite持有的methodhandler链接到生成内部类的获取方法.以后在调用的时候就不需要在进行加载了
 ```  
 
 **运行期:**
