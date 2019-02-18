@@ -8,9 +8,14 @@ JVM-学习郑宇迪教程-有感
 方法句柄是由所指向方法的参数类型以及返回值类型组成的,是用来确定当前方法句柄是否适配的唯一关键
 ,方法句柄相对于反射来说,省去每次做参数校验的麻烦,但是由于是间接调用还是会产生无法进行方法内联的这种情况
 其实invokedynamic能够使java这种静态类型的语言支持动态的特性.
-1.先获得callsite对象,使用当前的方法签名(对于jvm来说,返回值+参数列表+方法名称确定唯一的方法)
-2.调用LambdaMetafactory.metafactory方法使用asm字节码技术生成字节码,然后动态链接到callsite上
-3.完成动态调用
+- 先获得callsite对象,使用当前的方法签名(对于jvm来说,返回值+参数列表+方法名称确定唯一的方法)
+- 调用LambdaMetafactory.metafactory方法使用asm字节码技术生成字节码,然后动态链接到callsite上
+- 完成动态调用
+```
+ 当虚拟机遇到invokedynamic指令-->bootstrapmethod-->callsite.makesite-->在连接过程中
+ lambdametafactory.metafactory方法生成内部类,通过unsafe的方式加载到方法区里面-->然后通过
+ classsite持有的methodhandler链接到生成内部类的获取方法.以后在调用的时候就不需要在进行加载了
+```  
 
 **运行期:**
 也就是我们需要动态确定,运行时需要调用的方法,也就是虚方法表,其实我们在重写了父类的方法之后,使用父类的引用在调用子类对象的时候,
