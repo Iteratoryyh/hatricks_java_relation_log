@@ -1,4 +1,4 @@
-package com.hatricks.jvm.methodhandler;
+package com.hatricks.jvm.methodhandle;
 
 import static java.lang.invoke.MethodHandles.lookup;
 
