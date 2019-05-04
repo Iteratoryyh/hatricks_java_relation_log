@@ -8,6 +8,8 @@ public class CallSite implements ICallSite {
 
     public static void main(String[] args) {
         ICallSite callSite = System.out::println;
+        ICallSite callSite1 = System.out::println;
         callSite.test("ss");
+        callSite1.test("sss");
     }
 }

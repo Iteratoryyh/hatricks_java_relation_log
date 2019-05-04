@@ -2,6 +2,7 @@ package com.hatricks.jvm.methodhandle;
 
 import static java.lang.invoke.MethodHandles.lookup;
 
+import java.lang.invoke.ConstantCallSite;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodType;
 
@@ -17,6 +18,7 @@ public class MethodHandleTest {
         Object obj = System.currentTimeMillis() % 2 == 0 ? System.out : new ClassA();
         /*无论obj最终是哪个实现类，下面这句都能正确调用到println方法*/
         getPrintlnMH(obj).invokeExact("icyfenix");
+//        new ConstantCallSite().dynamicInvoker();
     }
 
     private static MethodHandle getPrintlnMH(Object reveiver) throws Throwable {
